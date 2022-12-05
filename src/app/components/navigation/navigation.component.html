@@ -1,0 +1,58 @@
+<mat-toolbar>
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon *ngIf="!sidenav.opened">
+      menu
+    </mat-icon>
+    <mat-icon *ngIf="sidenav.opened">
+      close
+    </mat-icon>
+  </button>
+  <h1 class="company-name">brainfree</h1>
+
+</mat-toolbar>
+
+<mat-sidenav-container [class.isOpen]="sidenav.opened">
+
+  <mat-sidenav #sidenav="matSidenav">
+    <h4 class="name">{{user.firstName}} {{user.lastName}}</h4>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button">
+      <mat-icon>home</mat-icon>
+      <span>Home</span>
+    </button>
+
+    <button mat-button class="menu-button">
+      <mat-icon>info</mat-icon>
+      <span>About</span>
+    </button>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" (click)="openUserKeycloakAccount()">
+      <mat-icon>person</mat-icon>
+      <span>Account</span>
+    </button>
+
+    <button mat-button class="menu-button" (click)="openRoute('products')">
+      <mat-icon> list_alt</mat-icon>
+      <span>Produkte</span>
+    </button>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" (click)="logout()">
+      <img class="img-logout" alt="logout icon" src="assets/images/logout.png">
+      <span>Abmelden</span>
+    </button>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content class="content">
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+

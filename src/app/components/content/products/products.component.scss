@@ -1,0 +1,72 @@
+/*color*/
+$primary-color: #0b2828;
+$second-color: #37475a;
+$hover-color: orange;
+
+/*manipulation*/
+$shadow: 10px 6px 6px #756f6f;
+
+app-loading {
+  display: block;
+  margin-top: 20%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 15%;
+  font-size: 2rem;
+  align-items: center;
+  text-align: center;
+}
+
+.mat-paginator {
+  margin-bottom: 2%;
+  font-size: 1.3rem;
+  background-color: whitesmoke;
+
+  .mat-select-value {
+    font-size: 1.3rem;
+  }
+}
+
+.product-card-container {
+  margin-top: 2%;
+  min-width: 380px;
+  width: 80%;
+  margin-left: 4%;
+  margin-right: 4%;
+  height: 90%;
+
+  .cards {
+    display: flex;
+    flex-flow: row wrap;
+    column-gap: 40px;
+  }
+
+  app-product {
+    flex-shrink: 4; /* default 1 */
+  }
+}
+
+.manage-product-container > button:hover {
+  background-color: $hover-color;
+}
+
+.mat-mini-fab.mat-accent {
+  background-color: $second-color;
+}
+
+.manage-product-container > button {
+  top: 20px;
+  margin-bottom: 1%;
+  margin-left: 4%;
+  width: 80px;
+  height: 80px;
+  float: left;
+
+  .add-product-icon {
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 44px;
+    width: 44px;
+    font-size: 3rem;
+  }
+}

@@ -1,0 +1,45 @@
+<app-loading *ngIf="loadingState"></app-loading>
+
+
+<div class="manage-product-container">
+  <button *ngIf="isUserInRoleProductManger() && !loadingState" mat-mini-fab
+          (click)="createProduct = true">
+    <mat-icon class="add-product-icon"
+              matTooltip="Produkt hinzufügen"
+              matTooltipPosition="above">add
+    </mat-icon>
+  </button>
+</div>
+
+
+<div *ngIf="products$ | async as products">
+
+  <div class="product-card-container">
+    <div *ngIf="products.length > 5">
+      <mat-paginator [length]="products.length" class="paginator"
+                     [pageSize]="5"
+                     [pageSizeOptions]="[5,10,20,50,100]"
+                     (page)="OnPageChanged($event)">
+      </mat-paginator>
+    </div>
+    <div class="cards">
+      <ng-container>
+        <div *ngIf="createProduct">
+          <app-product
+            [product]=getEmptyProduct()
+            [isUserInRoleProductManger]="isUserProductManager"
+            [createProduct]="createProduct">
+          </app-product>
+        </div>
+        
+        <app-product *ngFor="let product of productsSlice"
+                     [product]="product"
+                     [isUserInRoleProductManger]="isUserProductManager"
+                     (disableProductCard)="disableEmptyCard($event)">
+        </app-product>
+      </ng-container>
+    </div>
+
+  </div>
+</div>
+
